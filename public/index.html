@@ -1,33 +1,290 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>CSS/HTML Workshop with Drivy</title>
-  </head>
-  <body>
-    <div id="car">
-      <input class="model" type="text" placeholder="Car model"/>
-      <input class="price-by-day" type="number" placeholder="Price by day"/>
-      <input class="price-by-km" type="number" placeholder="Price by km"/>
-    </div>
-    <div id="rental">
-      <input class="begin" type="date" placeholder="Rental begin date"/>
-      <input class="end" type="date" placeholder="Rental end date"/>
-      <input class="distance" type="number" placeholder="Distance in km"/>
-      <input class="option" type="checkbox" placeholder="Deductible option"/>
-    </div>
-    <button id="compute">Compute</button>
-    <div id="actors"></div>
-    <script id="template" type="x-tmpl-mustache">
-      {{#actors}}
-        <div class="actor">
-          <span>{{who}}</span>
-          <span>{{type}}</span>
-          <span>{{amount}}</span>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/freelancer.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+		<style type="text/css">
+			body {background-color: #022D3C }
+			.navbar-default {background-color: #5F8090;border-color: transparent;}
+			body {color: #99CEE0;}
+			a, a:hover, a:focus, a:active, a.active {color: #99CEE0;}
+			.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{background-color: #5F8090;}
+			#portfolio .portfolio-item .portfolio-link .caption {background: transparent;}
+			.floating-label-form-group-with-focus label{color : #99CEE0}
+			.form-control{color : #99CEE0}
+			.col-lg-11{color:#ACB6C0}
+			.form-control1{color:#ACB6C0}
+			header .container {padding-top: 140px;padding-bottom: 20px;}
+
+		</style>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <a class="navbar-brand" href="#page-top">DRIVY</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+					<li class="page-scroll">
+                        <a href="#contact">Rent a Car</a>
+                    </li>
+					<li class="page-scroll">
+                        <a href="#about">About Us</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Cars</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      {{/actors}}
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/road.jpg">
+                    <div class="intro-text">
+                        <h2>Rent the Cars Next Door</h2><br>
+                        <span class="skills">Cheaper, closer and friendlier</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+		    <section id="contact">
+         <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Rent a Car !</h2><br><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-lg-offset-2" align="justify">
+                    <form name="sentMessage" id="Form" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Car model</label>
+                                <input type="text" class="form-control" placeholder="Car model" id="Car model" required data-validation-required-message="Car model">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+						<div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Price by day</label>
+                                <input type="text" class="form-control" placeholder="Price by day" id="Price by day" required data-validation-required-message="Price by day">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+						<div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Price by km</label>
+								<input type="text" class="form-control" placeholder="Price by km" id="Price by km" required data-validation-required-message="Price by km">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+						<div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Distance in km</label>
+								<input type="text" class="form-control" placeholder="Distance in km" id="Distance in km" required data-validation-required-message="Distance in km">
+                                <p class="help-block text-danger"></p>
+                            </div>
+							
+                        </div><br>
+						
+					</form>
+					<button type="button" class="btn btn-primary" id="compute">Send</button>
+                </div>
+				
+                        
+                            
+                
+                        
+				
+				<div class="col-lg-3"></div>
+				
+                <div class="col-lg-3" align="justify">
+					<form name="sentMessage" id="Form" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Rental begin date</label>
+								<div class="col-lg-11">Rental begin date</div>
+                                <input type="date" class="form-control1" placeholder="Rental begin date" id="Rental begin date" required data-validation-required-message="Rental begin date">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+						<div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Rental end date</label>
+								<div class="col-lg-11">Rental end date</div>
+                                <input type="date" class="form-control1" placeholder="Rental end date" id="Rental end date" required data-validation-required-message="Rental end date">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+						<div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Price by km</label>
+								<input type="text" class="form-control" placeholder="Price by km" id="Price by km" required data-validation-required-message="Price by km">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+						      <div class="has-success">
+								  <div class="checkbox">
+									<label>
+									  <input type="checkbox" id="checkboxSuccess" value="option1">
+									  Deductible option
+									</label>
+								  </div>
+								</div>
+
+						
+						
+					</form>
+					</div>
+					
+                        
+            </div>
+        </div>
+    </section>
+	
+	<section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About Us</h2><br><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2" align="justify">
+                    <p>Qui cum venisset ob haec festinatis Antiochiam, praestrictis palatii ianuis, cotempto Caesare, quem videri decuerat, ad praetorium cum pompa sollemni perrexit morbosque diu causatus nec regiam introiit nec processit !</p>
+                </div>
+                <div class="col-lg-4" align="justify">
+                    <p>Sed (saepe enim redeo ad Scipionem, cuius omnis sermo erat de amicitia) querebatur, quod omnibus in rebus homines diligentiores essent; capras et oves quot quisque haberet, dice :D </p>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Available Cars<br></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/Image1.png" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/Image1.png" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/Image1.png" class="img-responsive">
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+
+
+	
+	    
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-6">
+                        <h4>Who Are We?</h4>
+                        <p>Drivy is the leading peer-to-peer car rental service in Europe - with full insurance for users. To rent out your own car when you don't use it, or drive your neighbor's car for your week-end getaways.</p>
+                    </div>
+                    <div class="footer-col col-md-6">
+                        <h4>Follow us !</h4>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://www.facebook.com/drivyfr" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/108530477570400575729/posts" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/drivy" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                                                Copyright &copy; Suit-Up-Drivy 2016
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="js/freelancer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
     <script src="drivy.js"></script>
     <script src="index.js"></script>
-  </body>
+
+</body>
 </html>
